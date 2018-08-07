@@ -14,7 +14,7 @@ insert it into data structure.
 3. If the output buffer gets filled, it should be flushed to the output. If the input buffers get empty, next chunk of records should be read from the input file.
 
 # Algorithm to decide buffer split
-Assume block size = buffer size (B).
+Assume block size = buffer size (B).<br/>
 Let there are n blocks (without counting overflow blocks) and r records at some instant.
 let r0 be the maximum records that can fit in a block.
 Split occupancy = r/(`n*r0`) i.e, Assuming that split happens when occupancy >= 0.75.
