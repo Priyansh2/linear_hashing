@@ -15,11 +15,11 @@ insert it into data structure.
 
 # Algorithm to decide buffer split
 Assume block size = buffer size (B).<br/>
-Let there are n blocks (without counting overflow blocks) and r records at some instant.
-let r0 be the maximum records that can fit in a block.
-Split occupancy = r/(`n*r0`) i.e, Assuming that split happens when occupancy >= 0.75.
-To calculate r0:-
-Assume block size = buffer size (B).
-if each block has space for n keys and n+1 pointers then size occupied = `4*(n)+8*(n+1)` [if keys are integer]. Let this be called "S". Thus, picking the maximum value of n such that S<=B(block size).
+Let there are n blocks (without counting overflow blocks) and r records at some instant.<br/>
+Let r0 be the maximum records that can fit in a block.<br/>
+Split occupancy = `r/(n*r0)`. Setting threshold to 0.75. This means split happens when occupancy >= 0.75.<br/>
+To calculate r0:-<br/>
+if each block has space for n keys and n+1 pointers then size occupied = `4*(n)+8*(n+1)` [if keys are integer]</br>
+Let this be called "S". Thus, picking the maximum value of n such that S<=B (block size).<br/>
 This maximum value of n is our r0.
 
