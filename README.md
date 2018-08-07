@@ -12,3 +12,14 @@ insert it into data structure.
 1. M denotes the number of buffers and B denotes the buffer size (M>=2 and M*B<=10^6).
 2. Out of the M buffers, M-1 Buffers will be used as input buffers (which will hold the records from the input file), 1 buffer will be used as output buffer (holds the distinctrecords).
 3. If the output buffer gets filled, it should be flushed to the output. If the input buffers get empty, next chunk of records should be read from the input file.
+
+# Algorithm to decide buffer split
+Assume block size = buffer size (B).
+Let there are n blocks (without counting overflow blocks) and r records at some instant.
+let r0 be the maximum records that can fit in a block.
+Split occupancy = r/(n*r0) i.e, Assuming that split happens when occupancy >= 0.75.
+To calculate r0:-
+Assume block size = buffer size (B).
+if each block has space for n keys and n+1 pointers then size occupied = 4*(n)+8*(n+1) [if keys are integer]. Let this be called "S". Thus, picking the maximum value of n such that S<=B(block size).
+This maximum value of n is our r0.
+
